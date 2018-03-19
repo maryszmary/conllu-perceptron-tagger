@@ -166,7 +166,8 @@ class PerceptronTagger():
 		add('i suffix', word[-3:])
 		add('i suffix1', word[-1])
 		add('i pref', word[0:3])
-		add('containsNumber', str(word.isnumeric()))
+		add('containsNumber', str(word.isnumeric
+		add('isupper', str(word[0].isupper()))
 		add('i-1 tag', prev)
 		add('i-2 tag', prev2)
 		add('i tag+i-2 tag', prev, prev2)
