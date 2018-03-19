@@ -164,7 +164,9 @@ class PerceptronTagger():
 		# It's useful to have a constant feature, which acts sort of like a prior
 		add('bias')
 		add('i suffix', word[-3:])
-		add('i pref1', word[0])
+		add('i suffix1', word[-1])
+		add('i pref', word[0:3])
+		add('containsNumber', str(word.isnumeric()))
 		add('i-1 tag', prev)
 		add('i-2 tag', prev2)
 		add('i tag+i-2 tag', prev, prev2)
@@ -172,11 +174,12 @@ class PerceptronTagger():
 		add('i-1 tag+i word', prev, context[i])
 		add('i-1 word', context[i-1])
 		add('i-1 suffix', context[i-1][-3:])
+		add('i-3 word', context[i-3])
 		add('i-2 word', context[i-2])
 		add('i+1 word', context[i+1])
 		add('i+1 suffix', context[i+1][-3:])
-		add('i+2 word', context[i+2])
-		#print(word, '|||', features)
+		# add('i+2 word', context[i+2])
+		# print(word, '|||', features)
 		return features
 
 	def _make_tagdict(self, sentences):
